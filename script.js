@@ -91,3 +91,41 @@ if (quoteForm) {
   });
   updateInquiry();
 }
+
+ 
+// Show the welcome offer only on the first visit in this browser.
+const welcomeOffer = document.querySelector('[data-welcome-offer]');
+if (welcomeOffer) {
+  const visitKey = 'strut2:visited';
+  let firstVisit = false;
+  try {
+    firstVisit = localStorage.getItem(visitKey) === null;
+    localStorage.setItem(visitKey, '1');
+  } catch (_) {
+    // Keep it hidden when visit history cannot be saved.
+  }
+  if (firstVisit) {
+    window.setTimeout(() => { welcomeOffer.hidden = false; }, 4000);
+  }
+  const dismissOffer = () => {
+    const heldFocus = welcomeOffer.contains(document.activeElement);
+    welcomeOffer.hidden = true;
+    if (heldFocus) document.querySelector('.brand')?.focus({ preventScroll: true });
+  };
+  welcomeOffer.querySelector('[data-offer-close]').addEventListener('click', dismissOffer);
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !welcomeOffer.hidden) dismissOffer();
+  });
+  welcomeOffer.querySelector('[data-offer-claim]').addEventListener('click', () => {
+    welcomeOffer.hidden = true;
+    if (!quoteForm) return;
+    const service = quoteForm.querySelector('[name="service"]');
+    service.value = 'Airport transfer';
+    service.dispatchEvent(new Event('change', { bubbles: true }));
+    quoteForm.querySelector('[name="tripType"]').value = 'Round trip';
+    const details = quoteForm.querySelector('[name="details"]');
+    const offerText = 'Please include the first-time rider offer: 20% off the return airport transfer with a round-trip booking.';
+    if (!details.value.includes(offerText)) details.value = [details.value, offerText].filter(Boolean).join('\n');
+    quoteForm.querySelector('[name="name"]').focus({ preventScroll: true });
+  });
+}
