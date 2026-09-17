@@ -47,3 +47,26 @@ if (quoteForm) {
     window.location.href = `mailto:marketing@strut2.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
 }
+
+ 
+// Carry the service-card choice into the quote request.
+if (quoteForm) {
+  const serviceSelect = quoteForm.querySelector('[name="service"]');
+  const serviceNames = {
+    'Airport Transfers': 'Airport transfer',
+    'Corporate Travel': 'Corporate travel',
+    'Weddings & Anniversaries': 'Wedding or anniversary',
+    'Proms & Graduations': 'Prom or graduation',
+    'Night on the Town': 'Night on the town',
+    'Private Events': 'Private event'
+  };
+  document.querySelectorAll('.service-card').forEach((card) => {
+    const link = card.querySelector('a[href="#quote"]');
+    const service = serviceNames[card.querySelector('h3')?.textContent.trim()];
+    if (!link || !serviceSelect || !service) return;
+    link.addEventListener('click', () => {
+      serviceSelect.value = service;
+      serviceSelect.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+  });
+}
