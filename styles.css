@@ -276,3 +276,13 @@ section[id] { scroll-margin-top: 100px; }
   .brand-logo { height: 56px; }
   .footer-brand .brand-logo { height: 160px; }
 }
+
+/* Match the original logo's opaque charcoal exactly. */
+.site-header, .site-header.scrolled, .site-footer {
+  background: #1a1b1c;
+}
+.site-header, .site-header.scrolled {
+  backdrop-filter: none;
+  border-bottom-color: rgba(255,255,255,.08);
+}
+.brand-logo { background: #1a1b1c; }
