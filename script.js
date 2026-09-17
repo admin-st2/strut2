@@ -41,7 +41,8 @@ if (quoteForm) {
       `Travel date: ${data.get('date')}`, `Service: ${data.get('service')}`,
       `Pickup: ${data.get('pickup')}`, `Destination: ${data.get('destination')}`,
       `Passengers: ${data.get('passengers')}`, `Trip type: ${data.get('tripType')}`,
-      `Additional details: ${data.get('details') || 'None provided'}`, '',
+      `Additional details: ${data.get('details') || 'None provided'}`,
+      ...(data.get('service') === 'Corporate travel' ? [`Company / coordinator: ${data.get('coordinator') || 'Not provided'}`, `Preferred follow-up: ${data.get('followup')}`] : []), '',
       'Please contact me with availability and pricing.'
     ].join('\n');
     window.location.href = `mailto:marketing@strut2.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -69,4 +70,24 @@ if (quoteForm) {
       serviceSelect.dispatchEvent(new Event('change', { bubbles: true }));
     });
   });
+}
+
+if (quoteForm) {
+  const service = quoteForm.querySelector('[name="service"]');
+  const updateInquiry = () => {
+    const corporate = service.value === 'Corporate travel';
+    quoteForm.querySelector('[data-executive-fields]').hidden = !corporate;
+    quoteForm.querySelector('[data-inquiry-title]').textContent = corporate ? 'Your executive travel request' : 'Plan your journey';
+    quoteForm.querySelector('[data-inquiry-context]').textContent = corporate
+      ? 'Share your schedule, stops, and preferences. Please leave confidential meeting details out of this request.'
+      : 'Share your travel details for a personal quote.';
+  };
+  service.addEventListener('change', updateInquiry);
+  document.querySelectorAll('[data-executive-inquiry]').forEach(link => {
+    link.addEventListener('click', () => {
+      service.value = 'Corporate travel';
+      updateInquiry();
+    });
+  });
+  updateInquiry();
 }
