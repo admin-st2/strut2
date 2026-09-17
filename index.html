@@ -7,8 +7,8 @@
   <meta name="theme-color" content="#0b0b0d">
   <title>STRUT2 | Premium Chauffeur & Private Car Service</title>
   <link rel="preconnect" href="https://images.unsplash.com">
-  <link rel="stylesheet" href="styles.css?v=2">
-  <script defer src="script.js?v=2"></script>
+  <link rel="stylesheet" href="styles.css?v=3">
+  <script defer src="script.js?v=3"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -31,7 +31,7 @@
         <a href="#quote">Request a Quote</a>
         <a href="#contact">Contact</a>
         <a class="nav-phone" href="tel:+12129617894">(212) 961-7894</a>
-        <a class="btn btn-small btn-light" href="#quote">Book a Ride</a>
+        <a class="btn btn-small btn-light" href="#reservations">Book a Ride</a>
       </nav>
     </div>
   </header>
@@ -90,7 +90,7 @@
 
         <div class="service-grid">
           <article class="service-card service-card-featured">
-            <div class="service-card-top"><span class="service-number">01</span><span class="service-icon" aria-hidden="true">✈</span></div>
+            <div class="service-accent" aria-hidden="true"></div>
             <div>
               <h3>Airport Transfers</h3>
               <p>Reliable pickup and drop-off service designed around your itinerary and travel day.</p>
@@ -98,15 +98,15 @@
             <a href="#quote" aria-label="Request an airport transfer quote">Request a quote <span>↗</span></a>
           </article>
           <article class="service-card">
-            <div class="service-card-top"><span class="service-number">02</span><span class="service-icon" aria-hidden="true">◆</span></div>
+            <div class="service-accent" aria-hidden="true"></div>
             <div>
               <h3>Corporate Travel</h3>
-              <p>Professional transportation for executives, clients, meetings, roadshows, and company travel.</p>
+              <p>Discreet travel for executives and their guests. Plan a single transfer or coordinate a day of meetings around your schedule.</p>
             </div>
-            <a href="#quote" aria-label="Request a corporate transportation quote">Request a quote <span>↗</span></a>
+            <a href="#corporate" aria-label="Arrange corporate travel">Arrange executive travel <span>↗</span></a>
           </article>
           <article class="service-card">
-            <div class="service-card-top"><span class="service-number">03</span><span class="service-icon" aria-hidden="true">◇</span></div>
+            <div class="service-accent" aria-hidden="true"></div>
             <div>
               <h3>Weddings & Anniversaries</h3>
               <p>Refined transportation for ceremonies, celebrations, guests, and milestone evenings.</p>
@@ -114,7 +114,7 @@
             <a href="#quote" aria-label="Request a wedding transportation quote">Request a quote <span>↗</span></a>
           </article>
           <article class="service-card">
-            <div class="service-card-top"><span class="service-number">04</span><span class="service-icon" aria-hidden="true">★</span></div>
+            <div class="service-accent" aria-hidden="true"></div>
             <div>
               <h3>Proms & Graduations</h3>
               <p>Comfortable, coordinated transportation for important celebrations and group plans.</p>
@@ -122,7 +122,7 @@
             <a href="#quote" aria-label="Request a prom or graduation transportation quote">Request a quote <span>↗</span></a>
           </article>
           <article class="service-card">
-            <div class="service-card-top"><span class="service-number">05</span><span class="service-icon" aria-hidden="true">●</span></div>
+            <div class="service-accent" aria-hidden="true"></div>
             <div>
               <h3>Night on the Town</h3>
               <p>Enjoy the evening while a professional driver handles the route, parking, and timing.</p>
@@ -130,13 +130,44 @@
             <a href="#quote" aria-label="Request a night out quote">Request a quote <span>↗</span></a>
           </article>
           <article class="service-card">
-            <div class="service-card-top"><span class="service-number">06</span><span class="service-icon" aria-hidden="true">✦</span></div>
+            <div class="service-accent" aria-hidden="true"></div>
             <div>
               <h3>Private Events</h3>
               <p>Flexible service for bachelor and bachelorette events, dinners, concerts, and special occasions.</p>
             </div>
             <a href="#quote" aria-label="Request a private event transportation quote">Request a quote <span>↗</span></a>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="corporate" class="corporate section" aria-labelledby="corporate-title">
+      <div class="container corporate-layout">
+        <div>
+          <p class="eyebrow">Corporate &amp; executive travel</p>
+          <h2 id="corporate-title">Your time.<br>Your space.<br>Your itinerary.</h2>
+          <p class="corporate-lead">For the journeys between important moments. Arrange private transportation with your schedule, comfort, and discretion in mind.</p>
+        </div>
+        <div class="corporate-details">
+          <article><h3>A quieter way to travel</h3><p>Space to prepare for a meeting or simply pause between appointments. Tell us your preferences when arranging your ride.</p></article>
+          <article><h3>Plans that respect your time</h3><p>Share your meeting schedule, stops, and timing requirements so we can discuss the right transfer or hourly arrangement.</p></article>
+          <article><h3>Coordination made personal</h3><p>Booking for an executive or a visiting client? Include the travel coordinator’s contact details and we’ll follow up on the itinerary.</p></article>
+          <a class="btn btn-primary" href="#quote" data-executive-inquiry>Arrange executive travel</a>
+          <a class="corporate-call" href="tel:+12129617894">Prefer to speak? (212) 961-7894</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="reservations" class="section section-soft" aria-labelledby="reservations-title">
+      <div class="container booking-panel">
+        <div><p class="eyebrow dark">Online reservations</p>
+          <h2 id="reservations-title">Your next journey starts here.</h2>
+          <p>Enter your itinerary and explore vehicle options through our Limo Anywhere reservation system. Any displayed estimate is subject to confirmation.</p>
+        </div>
+        <div class="booking-actions">
+          <a class="btn dark-btn" href="https://book.mylimobiz.com/v4/strut" data-ores-widget="website" data-ores-alias="strut">Online Reservations</a>
+          <a href="https://book.mylimobiz.com/v4/strut" target="_blank" rel="noopener noreferrer">Open booking in a new tab ↗</a>
+          <p>For a tailored executive itinerary, <a href="#quote" data-executive-inquiry>request a personal quote</a>.</p>
         </div>
       </div>
     </section>
@@ -226,6 +257,8 @@
         </div>
 
         <form class="quote-form" data-quote-form>
+          <h3 data-inquiry-title>Plan your journey</h3>
+          <p class="inquiry-context" data-inquiry-context>Share your travel details for a personal quote.</p>
           <div class="form-row">
             <label>Full name<input name="name" autocomplete="name" required></label>
             <label>Email<input type="email" name="email" autocomplete="email" required></label>
@@ -249,6 +282,10 @@
           <div class="form-row">
             <label>Passengers<input type="number" name="passengers" min="1" value="1" required></label>
             <label>Trip type<select name="tripType"><option>One way</option><option>Round trip</option><option>Hourly</option></select></label>
+          </div>
+          <div data-executive-fields hidden>
+            <label>Company or travel coordinator (optional)<input name="coordinator" autocomplete="organization"></label>
+            <label>Preferred follow-up<select name="followup"><option>Email</option><option>Phone</option></select></label>
           </div>
           <label>Anything else?<textarea name="details" rows="3" placeholder="Flight number, return date, special requests…"></textarea></label>
           <button class="btn quote-submit" type="submit">Prepare My Quote Request <span>↗</span></button>
@@ -299,5 +336,6 @@
       <a href="#top">Back to top ↑</a>
     </div>
   </footer>
+  <script defer src="https://book.mylimobiz.com/v4/widgets/widget-loader.js"></script>
 </body>
 </html>
