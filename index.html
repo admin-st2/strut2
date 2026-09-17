@@ -7,8 +7,8 @@
   <meta name="theme-color" content="#0b0b0d">
   <title>STRUT2 | Premium Chauffeur & Private Car Service</title>
   <link rel="preconnect" href="https://images.unsplash.com">
-  <link rel="stylesheet" href="styles.css?v=3">
-  <script defer src="script.js?v=3"></script>
+  <link rel="stylesheet" href="styles.css?v=4">
+  <script defer src="script.js?v=4"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -31,7 +31,7 @@
         <a href="#quote">Request a Quote</a>
         <a href="#contact">Contact</a>
         <a class="nav-phone" href="tel:+12129617894">(212) 961-7894</a>
-        <a class="btn btn-small btn-light" href="#reservations">Book a Ride</a>
+        <a class="btn btn-small btn-light" href="https://book.mylimobiz.com/v4/strut">Book a Ride</a>
       </nav>
     </div>
   </header>
@@ -45,6 +45,7 @@
         <h1 id="hero-title">Arrive with confidence.</h1>
         <p class="hero-copy">Private transportation built around punctuality, discretion, comfort, and a seamless reservation experience.</p>
         <div class="hero-actions">
+          <a class="btn btn-primary" href="https://book.mylimobiz.com/v4/strut">Book a Ride</a>
           <a class="btn btn-primary" href="#quote">Request a Quote</a>
           <a class="btn btn-ghost" href="tel:+12129617894">Call (212) 961-7894</a>
         </div>
@@ -70,12 +71,13 @@
       </div>
     </section>
 
-    <aside class="visitor-offer" aria-label="Airport round-trip promotion">
-      <div class="container offer-inner">
-        <div class="offer-badge">First-time rider offer</div>
-        <p><strong>Save 20% on your return airport transfer</strong> when you book a round trip.</p>
-        <a href="#quote">Claim offer <span>↗</span></a>
-      </div>
+    <aside class="welcome-offer" data-welcome-offer aria-labelledby="welcome-offer-title" hidden>
+      <button class="offer-close" type="button" data-offer-close aria-label="Dismiss airport offer">×</button>
+      <p class="eyebrow dark">A welcome from STRUT2</p>
+      <h2 id="welcome-offer-title">A little more to look forward to.</h2>
+      <p>Save <strong>20% on your return airport transfer</strong> when you book a round trip.</p>
+      <a class="btn dark-btn" href="#quote" data-offer-claim>Request this offer</a>
+      <p class="offer-note">For first-time riders. Mention this offer in your request; STRUT2 will confirm eligibility and pricing.</p>
     </aside>
 
     <section id="services" class="services section section-soft" aria-labelledby="services-title">
@@ -154,20 +156,6 @@
           <article><h3>Coordination made personal</h3><p>Booking for an executive or a visiting client? Include the travel coordinator’s contact details and we’ll follow up on the itinerary.</p></article>
           <a class="btn btn-primary" href="#quote" data-executive-inquiry>Arrange executive travel</a>
           <a class="corporate-call" href="tel:+12129617894">Prefer to speak? (212) 961-7894</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="reservations" class="section section-soft" aria-labelledby="reservations-title">
-      <div class="container booking-panel">
-        <div><p class="eyebrow dark">Online reservations</p>
-          <h2 id="reservations-title">Your next journey starts here.</h2>
-          <p>Enter your itinerary and explore vehicle options through our Limo Anywhere reservation system. Any displayed estimate is subject to confirmation.</p>
-        </div>
-        <div class="booking-actions">
-          <a class="btn dark-btn" href="https://book.mylimobiz.com/v4/strut" data-ores-widget="website" data-ores-alias="strut">Online Reservations</a>
-          <a href="https://book.mylimobiz.com/v4/strut" target="_blank" rel="noopener noreferrer">Open booking in a new tab ↗</a>
-          <p>For a tailored executive itinerary, <a href="#quote" data-executive-inquiry>request a personal quote</a>.</p>
         </div>
       </div>
     </section>
@@ -336,6 +324,5 @@
       <a href="#top">Back to top ↑</a>
     </div>
   </footer>
-  <script defer src="https://book.mylimobiz.com/v4/widgets/widget-loader.js"></script>
 </body>
 </html>
