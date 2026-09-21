@@ -15,37 +15,79 @@ updateHeader();
 window.addEventListener('scroll', updateHeader, { passive: true });
 
 if (navToggle && nav) {
-  navToggle.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', String(isOpen));
-    navToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+  const mobileNav = window.matchMedia('(max-width: 980px)');
+  const setNavigation = (open, restoreFocus = false) => {
+    nav.classList.toggle('open', open);
+    nav.inert = mobileNav.matches && !open;
+    navToggle.setAttribute('aria-expanded', String(open));
+    navToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    if (restoreFocus) navToggle.focus();
+  };
+  navToggle.addEventListener('click', () => setNavigation(!nav.classList.contains('open')));
+  nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setNavigation(false)));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && nav.classList.contains('open')) setNavigation(false, true);
   });
-
-  nav.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      nav.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-      navToggle.setAttribute('aria-label', 'Open navigation');
-    });
+  document.addEventListener('click', event => {
+    if (!nav.contains(event.target) && !navToggle.contains(event.target)) setNavigation(false);
   });
+  mobileNav.addEventListener('change', () => setNavigation(false));
+  setNavigation(false);
 }
 
 if (quoteForm) {
+  quoteForm.querySelector('[data-quote-fields]').disabled = false;
+  const result = quoteForm.querySelector('[data-quote-result]');
+  const summary = quoteForm.querySelector('[data-quote-summary]');
+  const status = quoteForm.querySelector('[data-quote-status]');
+  const tripType = quoteForm.elements.tripType;
+  const returnFields = quoteForm.querySelector('[data-return-fields]');
+  const updateReturn = () => {
+    const roundTrip = tripType.value === 'Round trip';
+    returnFields.hidden = !roundTrip;
+    returnFields.querySelectorAll('input').forEach(input => {
+      input.disabled = !roundTrip;
+      input.required = roundTrip;
+    });
+    quoteForm.elements.returnDate.min = quoteForm.elements.date.value;
+  };
+  tripType.addEventListener('change', updateReturn);
+  quoteForm.elements.date.addEventListener('change', updateReturn);
+  updateReturn();
+  quoteForm.addEventListener('input', () => { result.hidden = true; });
+  quoteForm.addEventListener('change', () => { result.hidden = true; });
+  quoteForm.querySelector('[data-copy-quote]').addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(summary.value);
+      status.textContent = 'Copied. Paste the request into your email and send it to marketing@strut2.com.';
+    } catch (_) {
+      summary.focus();
+      summary.select();
+      status.textContent = 'Select and copy the prepared text below, then paste it into your email.';
+    }
+  });
   quoteForm.addEventListener('submit', (event) => {
     event.preventDefault();
+    if (!quoteForm.reportValidity()) return;
     const data = new FormData(quoteForm);
     const subject = `STRUT2 quote request — ${data.get('service')}`;
     const body = [
       'Hello STRUT2,', '', 'I would like a transportation quote.', '',
       `Name: ${data.get('name')}`, `Email: ${data.get('email')}`, `Phone: ${data.get('phone')}`,
-      `Travel date: ${data.get('date')}`, `Service: ${data.get('service')}`,
+      `Travel date: ${data.get('date')}`, `Pickup time (local): ${data.get('time')}`, `Service: ${data.get('service')}`,
       `Pickup: ${data.get('pickup')}`, `Destination: ${data.get('destination')}`,
       `Passengers: ${data.get('passengers')}`, `Trip type: ${data.get('tripType')}`,
+      ...(data.get('tripType') === 'Round trip' ? [`Return date: ${data.get('returnDate')}`, `Return pickup time (local): ${data.get('returnTime')}`] : []),
       `Additional details: ${data.get('details') || 'None provided'}`,
       ...(data.get('service') === 'Corporate travel' ? [`Company / coordinator: ${data.get('coordinator') || 'Not provided'}`, `Preferred follow-up: ${data.get('followup')}`] : []), '',
       'Please contact me with availability and pricing.'
     ].join('\n');
-    window.location.href = `mailto:marketing@strut2.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    summary.value = `${subject}\n\n${body}`;
+    result.hidden = false;
+    status.textContent = 'Your request is ready. It has not been sent. Choose Email my request or copy the details below.';
+    const emailLink = quoteForm.querySelector('[data-email-quote]');
+    emailLink.href = `mailto:marketing@strut2.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    emailLink.focus();
   });
 }
 
@@ -86,7 +128,7 @@ if (quoteForm) {
   document.querySelectorAll('[data-executive-inquiry]').forEach(link => {
     link.addEventListener('click', () => {
       service.value = 'Corporate travel';
-      updateInquiry();
+      service.dispatchEvent(new Event('change', { bubbles: true }));
     });
   });
   updateInquiry();
@@ -102,7 +144,7 @@ if (welcomeOffer) {
     firstVisit = localStorage.getItem(visitKey) === null;
     localStorage.setItem(visitKey, '1');
   } catch (_) {
-    // Keep it hidden when visit history cannot be saved.
+    firstVisit = false; // Keep it hidden when visit history cannot be saved.
   }
   if (firstVisit) {
     window.setTimeout(() => { welcomeOffer.hidden = false; }, 4000);
@@ -123,6 +165,7 @@ if (welcomeOffer) {
     service.value = 'Airport transfer';
     service.dispatchEvent(new Event('change', { bubbles: true }));
     quoteForm.querySelector('[name="tripType"]').value = 'Round trip';
+    quoteForm.querySelector('[name="tripType"]').dispatchEvent(new Event('change', { bubbles: true }));
     const details = quoteForm.querySelector('[name="details"]');
     const offerText = 'Please include the first-time rider offer: 20% off the return airport transfer with a round-trip booking.';
     if (!details.value.includes(offerText)) details.value = [details.value, offerText].filter(Boolean).join('\n');
