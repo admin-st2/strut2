@@ -31,3 +31,12 @@ This branch is for review. Do not merge or deploy until the owner approves the f
 - Confirm old URLs and redirects before switching hosting.
 - Connect Search Console and submit sitemap after launch; SEO changes do not guarantee ranking.
 - Choose analytics privacy/consent setup before activating tracking.
+
+## Airport service and flight-status draft
+- Airport card now opens airport-transfers.html with service details, FAQs and an external FlightAware button. This is a status lookup link, not embedded live flight tracking or an automatic pickup-time update.
+- Quote links preselect Airport transfer using a validated service parameter.
+- Limo Anywhere documentation describes automatic flight tracking and optional ETA-based pickup updates. Account configuration has not been checked or changed.
+- Confirmed: cancellation of outbound trip removes the return-trip promotion.
+- Confirmed: free cancellation at least two hours ahead applies ONLY to hourly service. It does not apply to chartered weddings/proms. Airport and charter cancellation terms remain undecided and are not invented on the page.
+- Still required: last-minute fee amount and threshold, late/no-show charge, charter/airport cancellation terms, waiting allowances, promotion base fare vs full total.
+- Image rotation is proposed, not enabled. Recommend approved hero images changing between visits or on a schedule; retain fixed fleet photos. A timed slideshow would need pause controls and reduced-motion support.

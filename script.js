@@ -172,3 +172,13 @@ if (welcomeOffer) {
     quoteForm.querySelector('[name="name"]').focus({ preventScroll: true });
   });
 }
+
+// Service pages can preselect a known service without accepting arbitrary text.
+if (quoteForm) {
+  const requestedService = new URLSearchParams(window.location.search).get('service');
+  const select = quoteForm.elements.service;
+  if (requestedService && Array.from(select.options).some(option => option.value === requestedService)) {
+    select.value = requestedService;
+    select.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+}
