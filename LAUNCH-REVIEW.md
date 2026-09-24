@@ -49,3 +49,5 @@ This branch is for review. Do not merge or deploy until the owner approves the f
 - No paid tracking, automatic estimates, analytics, or visitor emails have been enabled.
 - Privacy copy and service-specific terms require owner review. Confirm business contact details before launch.
 - Image rotation remains off pending an approved image set and rotation preference.
+
+- Each service page now includes a dedicated quote form with a fixed service and tailored fields. All quote buttons on those pages stay on the same page. Requests are prepared for email, not automatically submitted or priced.

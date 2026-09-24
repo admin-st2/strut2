@@ -79,7 +79,8 @@ if (quoteForm) {
       `Passengers: ${data.get('passengers')}`, `Trip type: ${data.get('tripType')}`,
       ...(data.get('tripType') === 'Round trip' ? [`Return date: ${data.get('returnDate')}`, `Return pickup time (local): ${data.get('returnTime')}`] : []),
       `Additional details: ${data.get('details') || 'None provided'}`,
-      ...(data.get('service') === 'Corporate travel' ? [`Company / coordinator: ${data.get('coordinator') || 'Not provided'}`, `Preferred follow-up: ${data.get('followup')}`] : []), '',
+      ...Array.from(quoteForm.querySelectorAll('[data-quote-label]')).map(field => `${field.dataset.quoteLabel}: ${field.value || 'Not provided'}`),
+      ...(!quoteForm.hasAttribute('data-service-specific') && data.get('service') === 'Corporate travel' ? [`Company / coordinator: ${data.get('coordinator') || 'Not provided'}`, `Preferred follow-up: ${data.get('followup')}`] : []), '',
       'Please contact me with availability and pricing.'
     ].join('\n');
     summary.value = `${subject}\n\n${body}`;
@@ -93,7 +94,7 @@ if (quoteForm) {
 
  
 // Carry the service-card choice into the quote request.
-if (quoteForm) {
+if (quoteForm && !quoteForm.hasAttribute('data-service-specific')) {
   const serviceSelect = quoteForm.querySelector('[name="service"]');
   const serviceNames = {
     'Airport Transfers': 'Airport transfer',
@@ -114,7 +115,7 @@ if (quoteForm) {
   });
 }
 
-if (quoteForm) {
+if (quoteForm && !quoteForm.hasAttribute('data-service-specific')) {
   const service = quoteForm.querySelector('[name="service"]');
   const updateInquiry = () => {
     const corporate = service.value === 'Corporate travel';
@@ -177,7 +178,7 @@ if (welcomeOffer) {
 if (quoteForm) {
   const requestedService = new URLSearchParams(window.location.search).get('service');
   const select = quoteForm.elements.service;
-  if (requestedService && Array.from(select.options).some(option => option.value === requestedService)) {
+  if (requestedService && select.options && Array.from(select.options).some(option => option.value === requestedService)) {
     select.value = requestedService;
     select.dispatchEvent(new Event('change', { bubbles: true }));
   }
