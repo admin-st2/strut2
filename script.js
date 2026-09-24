@@ -59,7 +59,7 @@ if (quoteForm) {
   quoteForm.querySelector('[data-copy-quote]').addEventListener('click', async () => {
     try {
       await navigator.clipboard.writeText(summary.value);
-      status.textContent = 'Copied. Paste the request into your email and send it to marketing@strut2.com.';
+      status.textContent = 'Copied. Paste the request into your email and send it to reservations@strut2.com.';
     } catch (_) {
       summary.focus();
       summary.select();
@@ -79,21 +79,22 @@ if (quoteForm) {
       `Passengers: ${data.get('passengers')}`, `Trip type: ${data.get('tripType')}`,
       ...(data.get('tripType') === 'Round trip' ? [`Return date: ${data.get('returnDate')}`, `Return pickup time (local): ${data.get('returnTime')}`] : []),
       `Additional details: ${data.get('details') || 'None provided'}`,
-      ...(data.get('service') === 'Corporate travel' ? [`Company / coordinator: ${data.get('coordinator') || 'Not provided'}`, `Preferred follow-up: ${data.get('followup')}`] : []), '',
+      ...Array.from(quoteForm.querySelectorAll('[data-quote-label]')).map(field => `${field.dataset.quoteLabel}: ${field.value || 'Not provided'}`),
+      ...(!quoteForm.hasAttribute('data-service-specific') && data.get('service') === 'Corporate travel' ? [`Company / coordinator: ${data.get('coordinator') || 'Not provided'}`, `Preferred follow-up: ${data.get('followup')}`] : []), '',
       'Please contact me with availability and pricing.'
     ].join('\n');
     summary.value = `${subject}\n\n${body}`;
     result.hidden = false;
     status.textContent = 'Your request is ready. It has not been sent. Choose Email my request or copy the details below.';
     const emailLink = quoteForm.querySelector('[data-email-quote]');
-    emailLink.href = `mailto:marketing@strut2.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    emailLink.href = `mailto:reservations@strut2.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     emailLink.focus();
   });
 }
 
  
 // Carry the service-card choice into the quote request.
-if (quoteForm) {
+if (quoteForm && !quoteForm.hasAttribute('data-service-specific')) {
   const serviceSelect = quoteForm.querySelector('[name="service"]');
   const serviceNames = {
     'Airport Transfers': 'Airport transfer',
@@ -114,7 +115,7 @@ if (quoteForm) {
   });
 }
 
-if (quoteForm) {
+if (quoteForm && !quoteForm.hasAttribute('data-service-specific')) {
   const service = quoteForm.querySelector('[name="service"]');
   const updateInquiry = () => {
     const corporate = service.value === 'Corporate travel';
@@ -172,3 +173,14 @@ if (welcomeOffer) {
     quoteForm.querySelector('[name="name"]').focus({ preventScroll: true });
   });
 }
+
+// Service pages can preselect a known service without accepting arbitrary text.
+if (quoteForm) {
+  const requestedService = new URLSearchParams(window.location.search).get('service');
+  const select = quoteForm.elements.service;
+  if (requestedService && select.options && Array.from(select.options).some(option => option.value === requestedService)) {
+    select.value = requestedService;
+    select.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+}
+
