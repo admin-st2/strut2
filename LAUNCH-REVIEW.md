@@ -62,3 +62,9 @@ This branch is for review. Do not merge or deploy until the owner approves the f
 - User supplied the old contact page screenshot. It supersedes provisional contact-page addresses: customer service info@strut2.com; business development partner@strut2.com; reservations reservations@strut2.com; safety/compliance compliance@strut2.com. All show 212-961-7894.
 - Updated four contact cards, click-to-call/email actions, and all homepage/service quote recipients to reservations@strut2.com. Marketing remains in the footer as shown in the screenshot.
 - Added FAQ topics with draft answers based on confirmed site/service information; the screenshot does not show original FAQ answers. No unverified safety claims or social/profile links copied.
+
+## About page from supplied screenshot
+- Added about.html with edited company story, mission, three values, fleet link, payment information, contact actions, and the three fully readable testimonials supplied by the user. The partially clipped fourth testimonial was not reconstructed.
+- Used the approved chauffeur image; no new fleet images or social links introduced. No review ratings or review structured data added.
+- Preserved screenshot payment methods and contracted corporate account terms. Reservations use the more recently confirmed reservations@strut2.com.
+- Header company links and footer navigation now include About STRUT2; homepage Why STRUT2 section remains available. Updated sitemap and CSS version.
