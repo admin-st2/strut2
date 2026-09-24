@@ -322,3 +322,12 @@ section[id] { scroll-margin-top: 100px; }
 .service-body h3 { margin-top: 36px; font-size: 1.3rem; }
 .footer-bottom { flex-wrap: wrap; gap: 20px; }
 .welcome-offer h2 { font-family: "Times New Roman", Times, serif; }
+
+.contact-options { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:32px; margin-top:48px; }
+.contact-options article { border-top:1px solid var(--line); padding-top:28px; }
+.contact-options h3 { font-size:1.35rem; }
+.contact-options p { color:var(--muted); }
+.contact-options a { display:inline-block; padding:12px 0; font-weight:600; overflow-wrap:anywhere; }
+.contact-services { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 40px; margin-top:36px; }
+.contact-services a { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:24px 0; border-bottom:1px solid var(--line); font-weight:600; }
+@media(max-width:760px) { .contact-options,.contact-services { grid-template-columns:1fr; } }

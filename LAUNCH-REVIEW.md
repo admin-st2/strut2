@@ -51,3 +51,9 @@ This branch is for review. Do not merge or deploy until the owner approves the f
 - Image rotation remains off pending an approved image set and rotation preference.
 
 - Each service page now includes a dedicated quote form with a fixed service and tailored fields. All quote buttons on those pages stay on the same page. Requests are prepared for email, not automatically submitted or priced.
+
+## Contact page draft
+- contact.php could not be retrieved (502 / certificate verification error); exact contents remain unverified.
+- Used indexed official About page for bookings@strut2.com and (212) 961-7894; official homepage for marketing@strut2.com. No template placeholder email copied.
+- Added contact.html, direct contact actions, six service-specific quote links, navigation/footer links and sitemap entry.
+- Confirm contact.php details from a screenshot or pasted text before treating this as a complete migration. No address or hours invented.
