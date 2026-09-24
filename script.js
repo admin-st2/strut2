@@ -59,7 +59,7 @@ if (quoteForm) {
   quoteForm.querySelector('[data-copy-quote]').addEventListener('click', async () => {
     try {
       await navigator.clipboard.writeText(summary.value);
-      status.textContent = 'Copied. Paste the request into your email and send it to marketing@strut2.com.';
+      status.textContent = 'Copied. Paste the request into your email and send it to reservations@strut2.com.';
     } catch (_) {
       summary.focus();
       summary.select();
@@ -87,7 +87,7 @@ if (quoteForm) {
     result.hidden = false;
     status.textContent = 'Your request is ready. It has not been sent. Choose Email my request or copy the details below.';
     const emailLink = quoteForm.querySelector('[data-email-quote]');
-    emailLink.href = `mailto:marketing@strut2.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    emailLink.href = `mailto:reservations@strut2.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     emailLink.focus();
   });
 }

@@ -57,3 +57,8 @@ This branch is for review. Do not merge or deploy until the owner approves the f
 - Used indexed official About page for bookings@strut2.com and (212) 961-7894; official homepage for marketing@strut2.com. No template placeholder email copied.
 - Added contact.html, direct contact actions, six service-specific quote links, navigation/footer links and sitemap entry.
 - Confirm contact.php details from a screenshot or pasted text before treating this as a complete migration. No address or hours invented.
+
+## Contact screenshot verified
+- User supplied the old contact page screenshot. It supersedes provisional contact-page addresses: customer service info@strut2.com; business development partner@strut2.com; reservations reservations@strut2.com; safety/compliance compliance@strut2.com. All show 212-961-7894.
+- Updated four contact cards, click-to-call/email actions, and all homepage/service quote recipients to reservations@strut2.com. Marketing remains in the footer as shown in the screenshot.
+- Added FAQ topics with draft answers based on confirmed site/service information; the screenshot does not show original FAQ answers. No unverified safety claims or social/profile links copied.
