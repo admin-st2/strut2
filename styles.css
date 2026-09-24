@@ -305,3 +305,54 @@ section[id] { scroll-margin-top: 100px; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; }
 }
+
+/* Detailed service page, using the existing typography and spacing. */
+.service-intro { padding-top: 160px; }
+.service-intro h1 { font-size: clamp(3rem, 7vw, 6rem); }
+.service-intro .hero-copy { margin-top: 26px; }
+.service-body { max-width: 840px; }
+.service-body h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 24px; }
+.service-body p, .service-body li { color: #4e5054; }
+.service-body li { margin-bottom: 12px; }
+.service-faq details { border-bottom: 1px solid var(--line); padding: 20px 0; }
+.service-faq summary { cursor: pointer; font-weight: 600; }
+.service-faq details p { margin-bottom: 0; }
+
+
+.service-body h3 { margin-top: 36px; font-size: 1.3rem; }
+.footer-bottom { flex-wrap: wrap; gap: 20px; }
+.welcome-offer h2 { font-family: "Times New Roman", Times, serif; }
+
+.contact-options { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:32px; margin-top:48px; }
+.contact-options article { border-top:1px solid var(--line); padding-top:28px; }
+.contact-options h3 { font-size:1.35rem; }
+.contact-options p { color:var(--muted); }
+.contact-options a { display:inline-block; padding:12px 0; font-weight:600; overflow-wrap:anywhere; }
+.contact-services { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 40px; margin-top:36px; }
+.contact-services a { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:24px 0; border-bottom:1px solid var(--line); font-weight:600; }
+@media(max-width:760px) { .contact-options,.contact-services { grid-template-columns:1fr; } }
+
+.contact-options { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.contact-call { font-size:.9rem; }
+@media(max-width:760px) { .contact-options { grid-template-columns:1fr; } }
+
+.about-story,.about-practical { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:64px; align-items:center; }
+.about-story figure,.about-testimonials figure { margin:0; min-width:0; }
+.about-story img { width:100%; height:auto; border-radius:var(--radius); }
+.about-story figcaption { color:var(--muted); font-size:.85rem; margin-top:14px; }
+.about-values,.about-testimonials { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:36px; margin-top:48px; }
+.about-values article { border-top:1px solid var(--line); padding-top:24px; }
+.about-values h3 { font-size:1.35rem; }
+.about-testimonials blockquote { margin:0 0 24px; font-size:1.12rem; }
+.about-testimonials figcaption { color:var(--accent); }
+.about-testimonials figcaption span { display:block; font-size:.85rem; color:#c4c4c8; }
+.about-practical { align-items:start; }
+.site-nav a[aria-current="page"] { color:var(--accent); }
+@media(max-width:980px) { .about-story,.about-practical { gap:36px; } .about-values,.about-testimonials { grid-template-columns:1fr; gap:32px; } }
+@media(max-width:700px) { .about-story,.about-practical { grid-template-columns:1fr; } }
+
+.service-photograph { padding-top:48px; }
+.service-photograph img { width:100%; height:auto; border-radius:var(--radius); }
+.contact-welcome { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,380px); align-items:center; gap:64px; }
+.contact-welcome img { width:100%; height:auto; border-radius:var(--radius); }
+@media(max-width:700px) { .contact-welcome { grid-template-columns:1fr; gap:28px; } .contact-welcome img { max-width:380px; } }
