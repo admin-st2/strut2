@@ -317,3 +317,8 @@ section[id] { scroll-margin-top: 100px; }
 .service-faq details { border-bottom: 1px solid var(--line); padding: 20px 0; }
 .service-faq summary { cursor: pointer; font-weight: 600; }
 .service-faq details p { margin-bottom: 0; }
+
+
+.service-body h3 { margin-top: 36px; font-size: 1.3rem; }
+.footer-bottom { flex-wrap: wrap; gap: 20px; }
+.welcome-offer h2 { font-family: "Times New Roman", Times, serif; }

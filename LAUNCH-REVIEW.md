@@ -40,3 +40,12 @@ This branch is for review. Do not merge or deploy until the owner approves the f
 - Confirmed: free cancellation at least two hours ahead applies ONLY to hourly service. It does not apply to chartered weddings/proms. Airport and charter cancellation terms remain undecided and are not invented on the page.
 - Still required: last-minute fee amount and threshold, late/no-show charge, charter/airport cancellation terms, waiting allowances, promotion base fare vs full total.
 - Image rotation is proposed, not enabled. Recommend approved hero images changing between visits or on a schedule; retain fixed fleet photos. A timed slideshow would need pause controls and reduced-motion support.
+
+
+## September 24 review draft
+- Added five service detail pages, booking guidelines, and a factual website privacy draft.
+- All six service cards open detail pages; service quotes carry a validated service selection.
+- Welcome offer heading uses Times New Roman.
+- No paid tracking, automatic estimates, analytics, or visitor emails have been enabled.
+- Privacy copy and service-specific terms require owner review. Confirm business contact details before launch.
+- Image rotation remains off pending an approved image set and rotation preference.
